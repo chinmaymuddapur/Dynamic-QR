@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    {
+      "source": "/c/:token",
+      "destination": "https://hqabqueltgyhvcxxqebj.supabase.co/functions/v1/c/:token"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "framework": "vite"
+}
