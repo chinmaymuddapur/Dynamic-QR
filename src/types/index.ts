@@ -39,14 +39,16 @@ export interface Card {
   id: string;
   internal_card_no: string;
   public_token: string;
-  client_id: string;
+  client_id?: string;
   client_name?: string;
-  batch_id: string;
+  batch_id?: string;
   batch_name?: string;
-  original_url: string; // The original destination URL at time of batch/card creation
-  destination_url: string; // The current Google Review or target URL behind the dynamic URL
+  original_url?: string;
+  destination_url: string;
   status: CardStatus;
+  scan_count?: number;
   total_scans: number;
+  dynamic_url?: string;
   created_at: string;
   updated_at: string;
 }

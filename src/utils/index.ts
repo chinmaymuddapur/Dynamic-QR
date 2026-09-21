@@ -6,6 +6,14 @@ import { APP_CONFIG } from '../lib/constants';
 export function generatePublicToken(length: number = 8): string {
   const chars = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ'; // Omitting ambiguous characters 0, 1, I, O
   let token = '';
+  if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+    const array = new Uint8Array(length);
+    crypto.getRandomValues(array);
+    for (let i = 0; i < length; i++) {
+      token += chars.charAt(array[i] % chars.length);
+    }
+    return token;
+  }
   for (let i = 0; i < length; i++) {
     token += chars.charAt(Math.floor(Math.random() * chars.length));
   }

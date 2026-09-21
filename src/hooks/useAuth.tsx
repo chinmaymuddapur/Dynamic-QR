@@ -17,9 +17,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const currentUser = authService.getCurrentUser();
-    setUser(currentUser);
-    setIsLoading(false);
+    let mounted = true;
+    const init = async () => {
+      const currentUser = await authService.getInitialUser();
+      if (mounted) {
+        setUser(currentUser);
+        setIsLoading(false);
+      }
+    };
+    init();
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   const login = async (email: string, pass: string) => {
