@@ -3,16 +3,10 @@
     {
       "source": "/c/:token",
       "destination": "https://kafhoxhnqkrgitwoyhpr.supabase.co/functions/v1/redirect/c/:token"
-    }
-  ],
-  "routes": [
-    {
-      "src": "^/c/(.*)$",
-      "dest": "https://kafhoxhnqkrgitwoyhpr.supabase.co/functions/v1/redirect/c/$1"
     },
     {
-      "src": "^(?!/c/).*",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
